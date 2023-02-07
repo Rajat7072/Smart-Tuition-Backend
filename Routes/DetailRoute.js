@@ -92,7 +92,7 @@ router.post(
             res.json({
               errors: err,
               success: false,
-              error: "Some Error Ocurred",
+              error: "Some BAD Ocurred",
             })
           );
       }
