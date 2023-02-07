@@ -5,9 +5,9 @@ mongoose.set("strictQuery", false);
 const ConnectToMongo = async () => {
   //console.log(process.env.REACT_APP_CONN_URL);
   try {
-    const conn = mongoose.connect(process.env.REACT_APP_CONN_URL);
+    const conn = mongoose.connect(process.env.MONGO_URI);
     console.log(
-      `MongoDB connected successfully To Port ${process.env.REACT_APP_CONN_URL}`
+      `MongoDB connected successfully To Port ${process.env.MONGO_URI}`
         .rainbow
     );
   } catch (error) {
