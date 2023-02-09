@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const studentDetails = require("../Schema/Detail");
 const { body, validationResult, check } = require("express-validator");
-
+//I am checking
 router.post(
   "/student-detail",
   [
