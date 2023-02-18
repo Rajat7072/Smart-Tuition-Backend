@@ -3,6 +3,7 @@ const connectDB = require("./db");
 const app = express();
 const port = 8089;
 const DetailRoute = require("./Routes/DetailRoute");
+const ContactusRoute = require("./Routes/ContactusRoute");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 var cors = require("cors");
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/details", DetailRoute);
+app.use("/api/contact", ContactusRoute);
 
 app.listen(port, () => {
   connectDB();
