@@ -8,7 +8,7 @@ const SignupRoute = require("./Routes/SignupRoute");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 var cors = require("cors");
-// var colors = require("colors");
+var colors = require("colors");
 const TeacherDetailRoute = require("./Routes/TeacherDetailRoute");
 const LoginRoute = require("./Routes/LoginRoute");
 const TeacherMap = require("./Routes/TeacherMapDetails");
@@ -39,5 +39,5 @@ app.use("/api/teacherCart", CartDetail);
 
 app.listen(port, () => {
   connectDB();
-  console.log(`Example app listening on port http://localhost:${port}`);
+  console.log(`Example app listening on port http://localhost:${port}`.america);
 });

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// var colors = require("colors");
+var colors = require("colors");
 mongoose.set("strictQuery", false);
 
 const ConnectToMongo = async () => {
@@ -7,7 +7,7 @@ const ConnectToMongo = async () => {
   try {
     const conn = mongoose.connect(process.env.MONGO_URI);
     console.log(
-      `MongoDB connected successfully To Port ${process.env.MONGO_URI}`
+      `MongoDB connected successfully To Port ${process.env.MONGO_URI}`.rainbow
     );
   } catch (error) {
     console.log(error.message);
