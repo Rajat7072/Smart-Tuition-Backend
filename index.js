@@ -8,6 +8,7 @@ const SignupRoute = require("./Routes/SignupRoute");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 var cors = require("cors");
+var colors = require("colors");
 const TeacherDetailRoute = require("./Routes/TeacherDetailRoute");
 const LoginRoute = require("./Routes/LoginRoute");
 const TeacherMap = require("./Routes/TeacherMapDetails");
