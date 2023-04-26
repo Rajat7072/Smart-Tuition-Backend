@@ -14,6 +14,10 @@ const Contact_Us = new Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const contactusDetail = mongoose.model("ContactUs", Contact_Us);

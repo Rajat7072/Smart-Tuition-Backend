@@ -68,6 +68,10 @@ const Details_Student = new Schema({
   remark_if_any: {
     type: String,
   },
+  Monthly_Fees: {
+    type: String,
+    require: true,
+  },
   date: {
     type: Date,
     default: Date.now,

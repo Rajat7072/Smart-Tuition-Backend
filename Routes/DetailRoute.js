@@ -40,6 +40,15 @@ router.post(
       "gender_of_taecher",
       "Please Enter a valid gender of taecher"
     ).isLength(),
+    body("Monthly_Fees", "Please Enter Monthly Fees").isLength({ min: 1 }),
+    body(
+      "remark_if_any",
+      "Please Enter valid remark length defined is 500"
+    ).isLength({ max: 500 }),
+    body(
+      "taecher_qualification_detail",
+      "Qualification Details are high"
+    ).isLength({ max: 50 }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
