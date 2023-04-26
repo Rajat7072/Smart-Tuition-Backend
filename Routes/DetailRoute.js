@@ -75,6 +75,7 @@ router.post(
           gender_of_taecher,
           taecher_qualification_detail,
           remark_if_any,
+          Monthly_Fees,
         } = req.body;
         const Details = await studentDetails
           .create({
@@ -95,6 +96,7 @@ router.post(
             gender_of_taecher,
             taecher_qualification_detail,
             remark_if_any,
+            Monthly_Fees,
           })
           .then((studentDetails) => res.json({ success: true }))
           .catch((err) =>
