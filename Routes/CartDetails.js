@@ -8,7 +8,7 @@ router.post(
   [
     body("studentName", "Minimum 3 characters are allowed").isLength({
       min: 3,
-      max: 10,
+      max: 50,
     }),
     body("studentPhone", "Please Enter a valid Mobile Number").isLength({
       min: 10,
