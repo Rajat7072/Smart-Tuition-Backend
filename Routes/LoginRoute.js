@@ -18,14 +18,14 @@ router.post(
         res.status(404).send(errors);
       } else {
         const { Signemail, Signpassword } = req.body;
-        console.log(Signemail, Signpassword);
+        //console.log(Signemail, Signpassword);
         const userFound = await SignupDetails.findOne({ Signemail });
-        console.log(userFound);
+        //console.log(userFound);
         if (!userFound) {
           console.log("User Not found");
           res.status(404).send("User Does Not Exists");
         } else {
-          console.log("Mandatory", Signpassword, userFound);
+          //console.log("Mandatory", Signpassword, userFound);
           let checkPassword = await bcrypt.compare(
             Signpassword,
             userFound.Signpassword
@@ -33,18 +33,18 @@ router.post(
           if (!checkPassword) {
             res.status(404).send("Incorrect Credentials");
           } else {
-            console.log("Now you are Here");
+            //console.log("Now you are Here");
             const data = {
               val_id: userFound._id,
             };
-            console.log(data.val_id);
+            //console.log(data.val_id);
             const token = jwt.sign(data, process.env.REACT_APP_SECRET_KEY);
             res.send({ success: true, token });
           }
         }
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       res.status(500).send(`Server Error : ${error.message}`);
     }
   }

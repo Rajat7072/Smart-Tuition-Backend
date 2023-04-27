@@ -23,7 +23,7 @@ router.post(
     try {
       if (!errors.isEmpty()) {
         res.status(404).send(errors);
-        console.log(errors);
+        //console.log(errors);
       } else {
         const { studentName, studentPhone, teacherDetails } = req.body;
         const CartDetail = await teacherCartDetail

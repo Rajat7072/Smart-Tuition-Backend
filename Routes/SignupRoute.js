@@ -30,7 +30,7 @@ router.post(
     try {
       if (!errors.isEmpty()) {
         res.status(404).send(errors);
-        console.log(errors);
+        //console.log(errors);
       } else {
         const { firstName, lastName, Signemail, mobileNumber, Signpassword } =
           req.body;
@@ -59,7 +59,7 @@ router.post(
         res.send({ success: true, token });
       }
     } catch (error) {
-      console.log(`catch Error : ${error}`);
+      //console.log(`catch Error : ${error}`);
       res.status(500).send(`Server Error : ${error.message}`);
     }
   }

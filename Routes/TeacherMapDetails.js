@@ -14,7 +14,7 @@ router.get("/teacherMap", [], async (req, res) => {
       .select("-TeacherMobile -AadharCardNum");
     res.json(detail_data);
   } catch (error) {
-    console.log(error.message);
+    //console.log(error.message);
     res.status(404).send("Data not found");
   }
 });

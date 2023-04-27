@@ -23,7 +23,7 @@ router.post(
     try {
       if (!errors.isEmpty()) {
         res.status(404).send(errors);
-        console.log(errors);
+        //console.log(errors);
       } else {
         const { name, mobileNum, emailAdd } = req.body;
         const Details = await contactusDetail
@@ -42,7 +42,7 @@ router.post(
           );
       }
     } catch (error) {
-      console.log("catch Error");
+      //console.log("catch Error");
       res.status(500).send(`Server Error : ${error.message}`);
     }
   }
