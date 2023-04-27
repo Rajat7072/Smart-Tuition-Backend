@@ -9,7 +9,6 @@ const TeacherCartDetails = new Schema({
   studentPhone: {
     type: String,
     required: true,
-    unique: true,
   },
   teacherDetails: {
     type: Array,
