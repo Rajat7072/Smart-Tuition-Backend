@@ -11,7 +11,7 @@ router.get("/teacherMap", [], async (req, res) => {
   try {
     let detail_data = await details_of_teacher
       .find({})
-      .select("-TeacherMobile -AadharCardNum");
+      .select("-TeacherMobile -AadharCardNum -Add");
     res.json(detail_data);
   } catch (error) {
     //console.log(error.message);

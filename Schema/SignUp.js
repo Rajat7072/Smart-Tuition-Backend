@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const Details_Signup = new Schema({
-  
   firstName: {
     type: String,
     required: true,
@@ -18,6 +17,7 @@ const Details_Signup = new Schema({
   mobileNumber: {
     type: String,
     required: true,
+    unique: true,
   },
   Signpassword: {
     type: String,

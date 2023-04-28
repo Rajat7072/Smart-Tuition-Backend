@@ -35,7 +35,14 @@ router.post(
         const { firstName, lastName, Signemail, mobileNumber, Signpassword } =
           req.body;
         let user = await signUpDetails.findOne({ Signemail });
+        let userMobile = await signUpDetails.findOne({ mobileNumber });
         if (user) {
+          res.send({
+            success: false,
+            value: "User Already Exist Please Login",
+          });
+          return;
+        } else if (userMobile) {
           res.send({
             success: false,
             value: "User Already Exist Please Login",
