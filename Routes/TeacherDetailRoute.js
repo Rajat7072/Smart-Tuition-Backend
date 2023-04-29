@@ -9,7 +9,7 @@ router.post(
   authMiddleWare,
   [
     body("profileName", "Please Provide a Profile Name").isLength({ min: 2 }),
-    body("profilepicimg", "Please Provide a Profile Picture").isLength(),
+    //body("profilepicimg", "Please Provide a Profile Picture").isLength(),
     body("DOB", "Please Enter A valid Date")
       .matches(/^\d{4}-\d{2}-\d{2}$/)
       .isDate()

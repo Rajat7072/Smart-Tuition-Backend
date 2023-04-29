@@ -14,7 +14,7 @@ const Teacher_Detail = new Schema({
   },
   profilepicimg: {
     type: String,
-    required: true,
+    //required: true,
   },
   DOB: {
     type: String,
