@@ -18,7 +18,9 @@ router.post(
     body("Add", "Please Enter a Valid Address").isLength(),
     body("Qualification", "Please Enter a Valid Qualification").isLength(),
     body("TSubject", "Please Enter a Valid Subject").isLength(),
-    body("AadharCardNum", "Please Enter a Valid AadharCardNum").isLength(),
+    body("AadharCardNum", "Please Enter a Valid AadharCardNum").isLength({
+      max: 35,
+    }),
     body("FeeAsked", "Please Enter a Valid Fees").isLength(),
     body("TeacherMobile", "Please Enter a Valid Mobile Number").isLength({
       min: 10,
