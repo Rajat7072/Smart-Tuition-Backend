@@ -22,8 +22,11 @@ router.post(
         const userFound = await SignupDetails.findOne({ Signemail });
         //console.log(userFound);
         if (!userFound) {
-          console.log("User Not found");
-          res.status(404).send("User Does Not Exists");
+          //console.log("User Not found");
+          res.status(200).send({
+            success: false,
+            message: "Incorrect UserName or Password",
+          });
         } else {
           //console.log("Mandatory", Signpassword, userFound);
           let checkPassword = await bcrypt.compare(
@@ -31,7 +34,10 @@ router.post(
             userFound.Signpassword
           );
           if (!checkPassword) {
-            res.status(404).send("Incorrect Credentials");
+            res.status(200).send({
+              success: false,
+              message: "Incorrect UserName or Password",
+            });
           } else {
             //console.log("Now you are Here");
             const data = {
@@ -39,7 +45,8 @@ router.post(
             };
             //console.log(data.val_id);
             const token = jwt.sign(data, process.env.REACT_APP_SECRET_KEY);
-            res.send({ success: true, token });
+            console.log(token);
+            res.status(200).send({ success: true, token });
           }
         }
       }
