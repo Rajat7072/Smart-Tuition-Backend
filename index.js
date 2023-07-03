@@ -16,6 +16,7 @@ const CartDetail = require("./Routes/CartDetails");
 const studentRequirementMap = require("./Routes/StudentDetailsRoute");
 const teacherDetailLoginRoute = require("./Routes/TeacherDetailLoginRoute");
 const deleteTeacher = require("./Routes/DeleteTeacher");
+const updateTeacher = require("./Routes/TeacherUpdateDetails");
 
 dotenv.config();
 app.use(cors());
@@ -42,6 +43,7 @@ app.use("/api/teacherCart", CartDetail);
 app.use("/api/requirement", studentRequirementMap);
 app.use("/api/teacherLogin", teacherDetailLoginRoute);
 app.use("/api/delete", deleteTeacher);
+app.use("/api/detailsUpdate", updateTeacher);
 
 app.listen(port, () => {
   connectDB();

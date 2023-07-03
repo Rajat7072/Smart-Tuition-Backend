@@ -3,9 +3,10 @@ const router = express.Router();
 const teacherDetails = require("../Schema/TeacherDetail");
 const { body, validationResult } = require("express-validator");
 const authMiddleWare = require("./middleware/authMiddleWare");
+const SignupDetails = require("../Schema/SignUp");
 
-router.post(
-  "/teacher-details",
+router.put(
+  "/teacher-details-update",
   authMiddleWare,
   [
     body("profileName", "Please Provide a Profile Name").isLength({ min: 2 }),
@@ -54,31 +55,44 @@ router.post(
           TeacherExperiance,
           TeacherAbout,
         } = req.body;
-        const TeacherDetail = await teacherDetails
-          .create({
-            user: req.userIDDetail,
-            profileName,
-            profilepicimg,
-            DOB,
-            TGender,
-            Add,
-            Qualification,
-            TSubject,
-            TClasses,
-            AadharCardNum,
-            FeeAsked,
-            TeacherMobile,
-            TeacherExperiance,
-            TeacherAbout,
-          })
-          .then((TeacherDetail) => res.send({ success: true }))
-          .catch((err) =>
-            res.send({
-              errors: err,
-              success: false,
-              Error: err.message,
-            })
-          );
+        const newUpdatedDetails = {};
+        if (profileName) newUpdatedDetails.profileName = profileName;
+        if (profilepicimg) newUpdatedDetails.profilepicimg = profilepicimg;
+        if (DOB) newUpdatedDetails.DOB = DOB;
+        if (TGender) newUpdatedDetails.TGender = TGender;
+        if (Add) newUpdatedDetails.Add = Add;
+        if (Qualification) newUpdatedDetails.Qualification = Qualification;
+        if (TSubject) newUpdatedDetails.TSubject = TSubject;
+        if (TClasses) newUpdatedDetails.TClasses = TClasses;
+        if (AadharCardNum) newUpdatedDetails.AadharCardNum = AadharCardNum;
+        if (FeeAsked) newUpdatedDetails.FeeAsked = FeeAsked;
+        if (TeacherMobile) newUpdatedDetails.TeacherMobile = TeacherMobile;
+        if (TeacherExperiance)
+          newUpdatedDetails.TeacherExperiance = TeacherExperiance;
+        if (TeacherAbout) newUpdatedDetails.TeacherAbout = TeacherAbout;
+        const findId = await SignupDetails.findById(req.userIDDetail);
+        if (!findId) {
+          return res
+            .status(404)
+            .send("You are not Authourised to Perform this Action");
+        } else if (findId._id.toString() !== req.userIDDetail) {
+          return res.status(404).send("Please Do Not Disturb other's Details.");
+        } else {
+          const TeacherDetail = await teacherDetails
+            .findOneAndUpdate(
+              { user: req.userIDDetail },
+              { $set: newUpdatedDetails },
+              { new: true }
+            )
+            .then((TeacherDetail) => res.send({ success: true }))
+            .catch((err) =>
+              res.send({
+                errors: err,
+                success: false,
+                Error: err.message,
+              })
+            );
+        }
       }
     } catch (error) {
       res.status(500).send(`Server Error : ${error.message}`);

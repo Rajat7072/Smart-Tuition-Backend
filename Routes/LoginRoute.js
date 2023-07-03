@@ -45,7 +45,7 @@ router.post(
             };
             //console.log(data.val_id);
             const token = jwt.sign(data, process.env.REACT_APP_SECRET_KEY);
-            console.log(token);
+            //console.log(token);
             res.status(200).send({ success: true, token });
           }
         }
