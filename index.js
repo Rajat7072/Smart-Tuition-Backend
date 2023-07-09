@@ -18,8 +18,11 @@ const teacherDetailLoginRoute = require("./Routes/TeacherDetailLoginRoute");
 const deleteTeacher = require("./Routes/DeleteTeacher");
 const updateTeacher = require("./Routes/TeacherUpdateDetails");
 
+const corsOptions = {
+  origin: process.env.REACT_APP_SERVERURL,
+};
 dotenv.config();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: "5mb" }));
 app.use(
   bodyParser.urlencoded({
