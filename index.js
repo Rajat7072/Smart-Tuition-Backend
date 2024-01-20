@@ -18,11 +18,11 @@ const teacherDetailLoginRoute = require("./Routes/TeacherDetailLoginRoute");
 const deleteTeacher = require("./Routes/DeleteTeacher");
 const updateTeacher = require("./Routes/TeacherUpdateDetails");
 
-const corsOptions = {
-  origin: process.env.REACT_APP_SERVERURL,
-};
+// const corsOptions = {
+//   origin: process.env.REACT_APP_LOCALURL,
+// };
 dotenv.config();
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: "5mb" }));
 app.use(
   bodyParser.urlencoded({
@@ -31,6 +31,26 @@ app.use(
     limit: "5mb",
   })
 );
+
+app.use((req, res, next) => {
+  const allowedOrigins = [
+    process.env.REACT_APP_LOCALURL,
+    process.env.REACT_APP_LOCALURL_SERVER,
+    process.env.REACT_APP_LOCALURL_WORLD,
+    process.env.REACT_APP_LOCALURL_WORLD_CERT,
+  ];
+
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  next();
+});
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
